@@ -1,1 +1,1 @@
-# vuex_test
+# for practicing Vue.js 2.x
