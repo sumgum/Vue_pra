@@ -1,4 +1,5 @@
-const animals = ['pigs', 'goats', 'sheeps']
+const animals = ['pigs', 'goats', 'sheeps'];
+const fruits = ['apple', 'banana', 'peach'];
 
 // push 配列の末尾に1つ以上の要素を追加する。戻り値は新しい配列の要素数
 const PUSH = animals.push('cows');
@@ -24,5 +25,14 @@ console.log("UNSHIFT", animals);
 const REVERSE = animals.reverse();
 console.log("REVERSE", REVERSE);
 console.log("REVERSE", animals);
+
+// concat 配列に他の配列や値をつないでできた新しい配列を返す。
+const CONCAT = animals.concat(fruits);
+console.log(animals);
+console.log(fruits);
+console.log(CONCAT);
+
+let slice = CONCAT.slice();
+console.log("slice", slice);
 
 
