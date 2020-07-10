@@ -11,5 +11,13 @@ var app = new Vue({
       {index: 6, value: "f"},
       {index: 7, value: "g"},
     ],
+    numbers: [1, 2, 3, 4, 5]
+  },
+  computed: {
+    eventNumbers: function() {
+      return this.numbers.filter(function(number) {
+        return number % 2 === 0
+      })
+    }
   }
 })
