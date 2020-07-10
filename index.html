@@ -6,8 +6,8 @@
     <body>
         
         <div id="app">
-            <div v-for="item in items" v-bind="item.message">
-              {{item.message}}
+            <div v-for="item in items" :key="index">
+              {{item.value}}
             </div>
         </div>
         
