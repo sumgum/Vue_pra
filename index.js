@@ -1,50 +1,38 @@
-Vue.component('base-layout', {
-  template: `
-  <div class="container">
-    <header>
-      <slot name="header"></slot>
-    </header>
-    <main>
-      <slot></slot>
-    </main>
-    <footer>
-      <slot name="footer"></slot>
-    </footer>
-  </div>
-  `
-})
+// Vue.component('base-layout', {
+//   template: `
+//   <div class="container">
+//     <header>
+//       <slot name="header"></slot>
+//     </header>
+//     <main>
+//       <slot></slot>
+//     </main>
+//     <footer>
+//       <slot name="footer"></slot>
+//     </footer>
+//   </div>
+//   `
+// })
 
 var app = new Vue({
   el: '#app',
   data: {
-    message: 'Hello Vue!',
-    items: [
-      {index: 1, value: "a"},
-      {index: 2, value: "b"},
-      {index: 3, value: "c"},
-      {index: 4, value: "d"},
-      {index: 5, value: "e"},
-      {index: 6, value: "f"},
-      {index: 7, value: "g"},
-    ],
-    numbers: [1, 2, 3, 4, 5],
-    sets: [
-      [1, 2, 3, 4, 5],
-      [6, 7, 8, 9, 10]
-    ],
-  },
-  computed: {
-    eventNumbers: function() {
-      return this.numbers.filter(function(number) {
-        return number % 2 === 0
-      })
+    author: {
+      name: 'sum',
     }
   },
-  methods: {
-    even: function(numbers) {
-      return numbers.filter(function(number) {
-        return number % 2 === 0
-      })
-    }
+  created: function() {
+    let that = this;
+    this.timer = setTimeout(function() {
+      // ディレクティブ要素として後から追加できるのは入れ子となったオブジェクトの配下だけ
+      Vue.set(that.author, 'company', 'small');
+      app.$set(that.author, 'dept', 'dev');
+      // Object.assign も使える
+      that.author = Object.assign({}, that.author,
+        {age: 18});
+    }, 1000);
+  },
+  beforeDestroy: function() {
+    clearInterval(this.timer);
   }
 })
